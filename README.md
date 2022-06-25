@@ -1,5 +1,9 @@
 # api_final
 api final
+Учебный проект API от Яндекс.Практикум на DjangoRestFramework
+
+## Технологии
+Python 3.7, Django 3.2, DRF, JWT + Joser
 
 ### Установка: 
 #### Windows
@@ -30,3 +34,10 @@ api final
 Запустите сервер:
 
 `python manage.py runserver`
+
+## Функционал
+
+Подробные возможности можно увидеть после запуска сервера по ссылке:
+
+`http://127.0.0.1:8000/redoc`
+
