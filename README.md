@@ -2,6 +2,9 @@
 api final
 Учебный проект API от Яндекс.Практикум на DjangoRestFramework
 
+## Автор
+Александр Фокин (Wegnagun)
+
 ## Технологии
 Python 3.7, Django 3.2, DRF, JWT + Joser
 
@@ -36,6 +39,39 @@ Python 3.7, Django 3.2, DRF, JWT + Joser
 `python manage.py runserver`
 
 ## Функционал
+
+Как проверить работоспособность:
+создаем суперюзера
+`python3 manage.py createsuperuser`
+
+запускаем сервер
+`python3 manage.py runserver`
+
+через post запрос получаем токен пользователя:
+`/api/v1/jwt/create/`
+
+в body запроса передаем наши пароль и логин:
+**{
+"username": "string",
+"password": "string"
+}**
+
+полученный токен передаем в header запроса.
+
+Неавторизованные пользователи имеют доступ только на чтение:
+
+`GET api/v1/posts/ - получить список всех постов`
+
+`GET api/v1/posts/{id}/ - получение поста по id`
+
+`GET api/v1/groups/ - получение списка доступных групп`
+
+`GET api/v1/groups/{id}/ - получение информации о конкретной группе по id`
+
+`GET api/v1/{post_id}/comments/ - получение всех комментариев к посту`
+
+`GET api/v1/{post_id}/comments/{id}/ - получение комментария к посту по id`
+
 
 Подробные возможности можно увидеть после запуска сервера по ссылке:
 
