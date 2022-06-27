@@ -2,12 +2,12 @@ from rest_framework import serializers
 
 
 class ValidateSelfSubscription:
-    def __init__(self, user='user', following='following'):
-        self.user = user
-        self.following = following
+    requires_context = True
 
-    def __call__(self, data):
-        if data[self.user] == data[self.following]:
-            raise serializers.ValidationError(
-                'На себя подписываться запрещено.')
-        return data
+    def __call__(self, serializer_field):
+        print(f'dfdfdfdf   {serializer_field.context["request"].user}')
+        # for i, y in serializer_field[0].items():
+        #     print(f'dfdfdfdf   {y}')
+        # if all(field == serializer_field[field] for field in serializer_field):
+        #     raise serializers.ValidationError("Name already exists!")
+        # return serializer_field
