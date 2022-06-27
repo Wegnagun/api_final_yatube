@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 
-class ValidateSelfSubscription:
+class UniqueFieldValidator:
     def __init__(self, *fields):
         self.fields = fields
 
