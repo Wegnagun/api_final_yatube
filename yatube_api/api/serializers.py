@@ -4,7 +4,7 @@ from rest_framework.relations import SlugRelatedField
 from rest_framework.validators import UniqueTogetherValidator
 
 from posts.models import Comment, Post, Group, Follow
-from .validators import ValidateSelfSubscription
+from .validators import UniqueFieldValidator
 
 User = get_user_model()
 
@@ -53,4 +53,4 @@ class FollowSerializer(serializers.ModelSerializer):
                 queryset=Follow.objects.all(),
                 fields=['user', 'following'],
                 message='Вы уже подписаны на автора'),
-            ValidateSelfSubscription('user', 'following')]
+            UniqueFieldValidator('user', 'following')]
