@@ -27,6 +27,8 @@ Python 3.7, Django 3.2, DRF, JWT + Joser
 
 `pip install --upgrade setuptools ` опционально...
 
+`python -m pip install --upgrade pip setuptools` либо так)
+
 `pip install -r requirements.txt `
 
 ### Запуск

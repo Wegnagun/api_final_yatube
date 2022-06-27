@@ -2,12 +2,15 @@ from rest_framework import serializers
 
 
 class ValidateSelfSubscription:
-    requires_context = True
+    def __init__(self, *fields):
+        self.fields = fields
 
-    def __call__(self, serializer_field):
-        print(f'dfdfdfdf   {serializer_field.context["request"].user}')
-        # for i, y in serializer_field[0].items():
-        #     print(f'dfdfdfdf   {y}')
-        # if all(field == serializer_field[field] for field in serializer_field):
-        #     raise serializers.ValidationError("Name already exists!")
-        # return serializer_field
+    def iterator(self, data):
+        return [data[value] for value in self.fields]
+
+    def __call__(self, data):
+        iterated_data = self.iterator(data)
+        if all(
+                iterated_data[i] == iterated_data[0]
+                for i in range(1, len(iterated_data))):
+            raise serializers.ValidationError("Есть сопадение! (^_-)")
