@@ -5,12 +5,10 @@ class UniqueFieldValidator:
     def __init__(self, *fields):
         self.fields = fields
 
-    def iterator(self, data):
+    def field_picker(self, data) -> list:
         return [data[value] for value in self.fields]
 
     def __call__(self, data):
-        iterated_data = self.iterator(data)
-        if all(
-                iterated_data[i] == iterated_data[0]
-                for i in range(1, len(iterated_data))):
-            raise serializers.ValidationError("Есть сопадение! (^_-)")
+        iterated_data = self.field_picker(data)
+        if len(iterated_data) != len(set(iterated_data)):
+            raise serializers.ValidationError("Есть совпадение! (^_-)")
